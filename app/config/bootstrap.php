@@ -137,7 +137,7 @@ function __p($options) {
 function computeSize($file, $new_w, $new_h, $scale) {
   $dims = getimagesize($file);
   $old_x = $dims[0];
-  $old_y = $dims[1];
+  $old_y = $dims[0];
   $original_aspect = $old_x / $old_y;
   $new_aspect = $new_w / $new_h;
   if ($scale == 2) {
