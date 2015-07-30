@@ -405,7 +405,7 @@ class ProductsController extends AppController {
     exit('   ');
   }
 
-  function avatar_uri($id, $width = 50, $height = 50, $square = 1) {
+  function avatar_uri($id, $width = 50, $height = 50, $square = 0) {
     $path = PRODUCTIMAGES . DS . $id . DS . 'original.*';
     $options = array('width' => $width, 'height' => $height, 'square' => $square);
     if ($id != 'tmp') {
