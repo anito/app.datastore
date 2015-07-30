@@ -155,7 +155,7 @@ class FileComponent extends Object {
 		if (!is_dir($dir)) {
 			$parent_perms = $this->getPerms(dirname($dir));
 			$f = new Folder();
-			if ($f->create($dir, octdec('0777'))) {
+			if ($f->create($dir, octdec($parent_perms))) {
 				return true;
 			} else if ($parent_perms == '0755') {
 				if ($f->chmod($dir, 0777) && $f->create($dir)) {

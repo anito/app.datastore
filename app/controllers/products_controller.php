@@ -470,7 +470,7 @@ class ProductsController extends AppController {
 
       $source = TEMP_PATH . DS . $fn;
       $dest = DEST_PATH . DS . $fn;
-      copy($source, $dest);
+      $ret = copy($source, $dest);
 
       $this->Product->id = $id;
       $this->Product->saveField('image', $fn);
@@ -479,6 +479,7 @@ class ProductsController extends AppController {
     foreach ($temp_files as $o) {
       unlink($o);
     }
+    return $ret;
   }
 
 }
