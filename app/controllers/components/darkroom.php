@@ -202,7 +202,7 @@ class DarkroomComponent extends Object {
 		if (function_exists('gd_info')) {
 			$gd = gd_info();
 			$version = preg_replace('/(^\w*\s*\W*)(\d+){1,}(.*)$/', '$2', $gd['GD Version']);
-			//$this->log("GD Version: " . $version, LOG_DEBUG);
+			$this->log("GD Version: " . $version, LOG_DEBUG);
 			//$version = ereg_replace('[[:alpha:][:space:]()]+', '', $gd['GD Version']);
 			settype($version, 'integer');
 			return $version;
