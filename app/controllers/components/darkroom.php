@@ -19,7 +19,7 @@ class DarkroomComponent extends Object {
 	// The workhorse develop function
 	////
 	function develop($name, $filename, $new_w, $new_h, $quality, $sharpening, $square = false, $x, $y, $force = false) {
-  sleep(5);
+//  sleep(5);
 		$old_mask = umask(0);
 
 		$gd = $this->gdVersion();
@@ -177,25 +177,25 @@ class DarkroomComponent extends Object {
 	// Check GD
 	////
 	private function gdVersion() {
-		return $this->_gd();
-//		if (function_exists('exec') && (DS == '/' || (DS == '\\' && MAGICK_PATH_FINAL != 'convert'))) {
-//			//error_log("MAGICK_PATH_FINAL: " . MAGICK_PATH_FINAL, 3, ROOT . DS . 'app' . DS . 'tmp' . DS . 'logs' . DS . 'debug.log');
-//			exec(MAGICK_PATH_FINAL . ' -version', $out);
-//			$test = $out[0];
-//			if (!empty($test) && strpos($test, ' not ') === false) {
-//				$bits = explode(' ', $test);
-//				$version = $bits[2];
-//				if (version_compare($version, '6.0.0', '>')) {
-//					return 4;
-//				} else {
-//					return 3;
-//				}
-//			} else {
-//				return $this->_gd();
-//			}
-//		} else {
-//			return $this->_gd();
-//		}
+//		return $this->_gd();
+		if (function_exists('exec') && (DS == '/' || (DS == '\\' && MAGICK_PATH_FINAL != 'convert'))) {
+			//error_log("MAGICK_PATH_FINAL: " . MAGICK_PATH_FINAL, 3, ROOT . DS . 'app' . DS . 'tmp' . DS . 'logs' . DS . 'debug.log');
+			exec(MAGICK_PATH_FINAL . ' -version', $out);
+			$test = $out[0];
+			if (!empty($test) && strpos($test, ' not ') === false) {
+				$bits = explode(' ', $test);
+				$version = $bits[2];
+				if (version_compare($version, '6.0.0', '>')) {
+					return 4;
+				} else {
+					return 3;
+				}
+			} else {
+				return $this->_gd();
+			}
+		} else {
+			return $this->_gd();
+		}
 	}
 
 	private function _gd() {
