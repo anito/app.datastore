@@ -19,7 +19,7 @@ class DarkroomComponent extends Object {
 	// The workhorse develop function
 	////
 	function develop($name, $filename, $new_w, $new_h, $quality, $sharpening, $square = false, $x, $y, $force = false) {
-        //sleep(5);
+  sleep(5);
 		$old_mask = umask(0);
 
 		$gd = $this->gdVersion();
