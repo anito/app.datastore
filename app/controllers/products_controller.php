@@ -487,7 +487,7 @@ class ProductsController extends AppController {
     }
 
     foreach ($temp_files as $o) {
-      unlink($o);
+//      unlink($o);
     }
     return $ret;
   }
