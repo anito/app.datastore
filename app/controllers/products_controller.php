@@ -411,7 +411,7 @@ class ProductsController extends AppController {
     if ($id != 'tmp') {
       $this->_use_preview($id, true);
     } else {
-      sleep(1);
+      sleep(4);
     }
 
     $files = glob($path);
