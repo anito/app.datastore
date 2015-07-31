@@ -139,6 +139,8 @@ function computeSize($file, $new_w, $new_h, $scale) {
   $old_x = $dims[0];
   $old_y = $dims[1];
   error_log(print_r($dims, TRUE));
+  error_log(print_r($dims, TRUE));
+  error_log(print_r($dims, TRUE));
   $original_aspect = $old_x / $old_y;
   $new_aspect = $new_w / $new_h;
   if ($scale == 2) {

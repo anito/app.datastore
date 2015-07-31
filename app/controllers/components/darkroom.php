@@ -177,7 +177,7 @@ class DarkroomComponent extends Object {
 	// Check GD
 	////
 	private function gdVersion() {
-//		return $this->_gd();
+		return $this->_gd();
 		if (function_exists('exec') && (DS == '/' || (DS == '\\' && MAGICK_PATH_FINAL != 'convert'))) {
 			//error_log("MAGICK_PATH_FINAL: " . MAGICK_PATH_FINAL, 3, ROOT . DS . 'app' . DS . 'tmp' . DS . 'logs' . DS . 'debug.log');
 			exec(MAGICK_PATH_FINAL . ' -version', $out);
