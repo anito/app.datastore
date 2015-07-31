@@ -450,6 +450,7 @@ class ProductsController extends AppController {
       return;
 
     $fn = basename($temp_files[0]);
+    
     $path_to_temp = TEMP_PATH . DS . $fn;
     $ext = $file->returnExt($fn);
     if ($use) {
@@ -471,6 +472,9 @@ class ProductsController extends AppController {
 
       $source = TEMP_PATH . DS . $fn;
       $dest = DEST_PATH . DS . $fn;
+      
+      $this->log($fn, LOG_DEBUG);
+      
       $ret = copy($source, $dest);
 
 //      $this->log($ret, LOG_DEBUG);
