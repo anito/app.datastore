@@ -473,7 +473,7 @@ class ProductsController extends AppController {
       $source = TEMP_PATH . DS . $fn;
       $dest = DEST_PATH . DS . $fn;
       
-      $this->log($fn, LOG_DEBUG);
+      $this->log('filename: '.$fn, LOG_DEBUG);
       $this->log('source: '.$source, LOG_DEBUG);
       $this->log('dest: '.$dest, LOG_DEBUG);
       $this->log('DEST_PATH: '.DEST_PATH, LOG_DEBUG);
