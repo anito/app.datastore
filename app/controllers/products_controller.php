@@ -478,7 +478,7 @@ class ProductsController extends AppController {
       
       $ret = copy($source, $dest);
 
-//      $this->log($ret, LOG_DEBUG);
+      $this->log('copy = '.$ret, LOG_DEBUG);
       
       $this->Product->id = $id;
       $this->Product->saveField('image', $fn);
