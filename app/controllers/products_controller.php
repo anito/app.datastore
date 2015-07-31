@@ -474,8 +474,9 @@ class ProductsController extends AppController {
       $dest = DEST_PATH . DS . $fn;
       
       $this->log($fn, LOG_DEBUG);
-      $this->log($source, LOG_DEBUG);
-      $this->log($dest, LOG_DEBUG);
+      $this->log('source: '.$source, LOG_DEBUG);
+      $this->log('dest: '.$dest, LOG_DEBUG);
+      $this->log('DEST_PATH: '.DEST_PATH, LOG_DEBUG);
       
       $ret = copy($source, $dest);
 
