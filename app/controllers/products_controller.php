@@ -445,7 +445,7 @@ class ProductsController extends AppController {
     define('TEMP_PATH', PRODUCTIMAGES . DS . 'tmp');
     define('DEST_PATH', PRODUCTIMAGES . DS . $id);
     $temp_files = glob(TEMP_PATH . DS . '*');
-    $this->log(count($temp_files), LOG_DEBUG);
+    
     if (count($temp_files) < 1)
       return;
 
@@ -473,6 +473,8 @@ class ProductsController extends AppController {
       $dest = DEST_PATH . DS . $fn;
       $ret = copy($source, $dest);
 
+      $this->log($ret, LOG_DEBUG);
+      
       $this->Product->id = $id;
       $this->Product->saveField('image', $fn);
     }
