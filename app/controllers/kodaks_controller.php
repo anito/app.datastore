@@ -40,7 +40,7 @@ class KodaksController extends AppController {
         $this->autoRender = false;
         $this->layout = false;
         $val = $this->params['named']['a'];
-        $this->log($this->params, LOG_DEBUG);
+//        $this->log($this->params, LOG_DEBUG);
         if (strpos($val, 'http://') !== false || substr($val, 0, 1) == '/') {
             header('Location: ' . $val);
             exit;
@@ -57,7 +57,7 @@ class KodaksController extends AppController {
         $val = str_replace(' ', '.2B', $val);
         $crypt = $salt->convert($val, false);
         $a = explode(',', $crypt);
-        $this->log($a, LOG_DEBUG);
+//        $this->log($a, LOG_DEBUG);
         $file = $fn = basename($a[0]);
         // Make sure supplied filename contains only approved chars
         if (preg_match("/[^A-Za-z0-9._-]/", $file)) {
