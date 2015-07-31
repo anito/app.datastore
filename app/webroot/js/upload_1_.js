@@ -251,8 +251,9 @@ function avatar_preview(){
 }
 
 function avatar_make_thumbs(id) {
-  $$('img.tmb_'+id).each(function(img) {
-    this.avatar_use(id, img, {
+  var fn;
+  $$('img.tmb_'+id).map(function(img) {
+    fn = this.avatar_use(id, img, {
       width:  50,
       height: 50,
       square: 1
