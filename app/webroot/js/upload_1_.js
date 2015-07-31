@@ -251,14 +251,27 @@ function avatar_preview(){
 }
 
 function avatar_make_thumbs(id) {
-  var fn;
-  $$('img.tmb_'+id).map(function(img) {
-    fn = this.avatar_use(id, img, {
-      width:  50,
-      height: 50,
-      square: 1
-    })
-  }, this)
+  var src, cb;
+  
+  cb = function(src) {
+    $$('img.tmb_'+id).map(function(img) {
+      img.src = src;
+    }, this)
+  }
+  
+  this.avatar_use(id, cb, {
+    width:  50,
+    height: 50,
+    square: 1
+  })
+  
+//  $$('img.tmb_'+id).map(function(img) {
+//    fn = this.avatar_use(id, img, {
+//      width:  50,
+//      height: 50,
+//      square: 1
+//    })
+//  }, this)
   $$('div#master img').map(function(img) {
     this.avatar_use(id, img, {
       width:  400,
@@ -274,7 +287,7 @@ function avatar_make_thumbs(id) {
 //reset_info();
 }
 
-function avatar_use(id, image, options){
+function avatar_use(id, cb, options){
   var defaults = {
     width:    50,
     height:   50,
@@ -298,6 +311,8 @@ function avatar_use(id, image, options){
           $('broken-image').removeClassName('broken');
           $('messenger-upload-avatar').redraw_hack();
           flushRow(id);
+          console.log(p);
+          cb(this.src);
           p.use();
         }
       }
