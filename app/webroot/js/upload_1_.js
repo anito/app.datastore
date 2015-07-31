@@ -251,18 +251,26 @@ function avatar_preview(){
 }
 
 function avatar_make_thumbs(id) {
-  var src, cb;
+  var cb;
   
-  cb = function(src) {
-    $$('img.tmb_'+id).map(function(img) {
+  cb = function(src, node) {
+    $$(node+id).map(function(img) {
       img.src = src;
     }, this)
   }
   
   this.avatar_use(id, cb, {
+    node: 'img.tmb_',
     width:  50,
     height: 50,
     square: 1
+  })
+  this.avatar_use(id, cb, {
+    node: 'div#master img',
+    width:  400,
+    height: 600,
+    square: 3,
+    isThumb: false
   })
   
 //  $$('img.tmb_'+id).map(function(img) {
@@ -272,14 +280,8 @@ function avatar_make_thumbs(id) {
 //      square: 1
 //    })
 //  }, this)
-  $$('div#master img').map(function(img) {
-    this.avatar_use(id, img, {
-      width:  400,
-      height: 600,
-      square: 3,
-      isThumb: false
-    })
-  }, this)
+//  $$('div#master img').map(function(img) {
+//  }, this)
   $('preview-submit-button').disabled = true;
   $('preview-submit-button').addClassName('disabled');
   $('default-icon-button').disabled = false;
@@ -289,6 +291,7 @@ function avatar_make_thumbs(id) {
 
 function avatar_use(id, cb, options){
   var defaults = {
+    node: 'img',
     width:    50,
     height:   50,
     square:   1,
@@ -296,7 +299,8 @@ function avatar_use(id, cb, options){
   }
   var o = $H(defaults).merge(options).toObject();
   var url = base_url+"products/avatar_uri/"+id+'/'+o.width+'/'+o.height+'/'+o.square;
-  var img_old = image;
+  var node = o.node;
+//  var img_old = image;
   new Ajax.Request(url,{
     onComplete:function(transport){
       if (parseInt(transport.status) > 300) {
@@ -307,12 +311,11 @@ function avatar_use(id, cb, options){
       var src = json.src_tmp;
       var img = new Image();
       var loadListener = function() {
+        cb(src, node);
         if(!o.isThumb) {
           $('broken-image').removeClassName('broken');
           $('messenger-upload-avatar').redraw_hack();
           flushRow(id);
-          console.log(p);
-          cb(this.src);
           p.use();
         }
       }
@@ -320,7 +323,6 @@ function avatar_use(id, cb, options){
       img.src = '';
       img.addEventListener('load', loadListener, false)
       img.src = src;
-      img_old.src = img.src;
     }.bind(this),
     onSuccess: function() {},
     onCreate: function() {
@@ -330,7 +332,7 @@ function avatar_use(id, cb, options){
       }
     },
     onFailure: function(transport) {
-      img_old.setOpacity(1);
+//      img_old.setOpacity(1);
       trigger_ajax_error(transport);
     }
   });
