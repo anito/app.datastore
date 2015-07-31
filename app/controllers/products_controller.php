@@ -445,6 +445,7 @@ class ProductsController extends AppController {
     define('TEMP_PATH', PRODUCTIMAGES . DS . 'tmp');
     define('DEST_PATH', PRODUCTIMAGES . DS . $id);
     $temp_files = glob(TEMP_PATH . DS . '*');
+    $this->log(count($temp_files), LOG_DEBUG);
     if (count($temp_files) < 1)
       return;
 
