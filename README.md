@@ -14,7 +14,7 @@ Datastore was optimized to manage software product information like product name
 
 ##Live Demo
 
-Check out the live [demo](http://datastore.anito.de/index.php?/) using the preconfigured credentials below:
+Check out the live [demo](http://data.webpremiere.de/) using the preconfigured credentials below:
 
 ||**username**|**password**|
 |:---------|:----------|:----------|
@@ -56,4 +56,4 @@ The following directories must have read/write permissions for these users:
 
 #Screenshot
 
-![Datastore](https://lh5.googleusercontent.com/-Qcaw9fGaaXs/TjLNnZCNjaI/AAAAAAAAADw/H3v7iszG-sk/s576/datastore.png)
+![Datastore](https://lh3.googleusercontent.com/-kke06fHrMAY/VcHxQhwFPmI/AAAAAAAAgt0/_kc_bmXDrAQ/s2048-Ic42/screenshot_datastore.png)
